@@ -1,0 +1,126 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, .5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.3s linear;
+
+  &_active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrapper {
+    max-width: 430px;
+    width: 100%;
+    padding-bottom: 37px;
+    background-color: #c1e8d5;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin: 34px auto 48px auto;
+    max-width: 330px;
+    width: 100%;
+    font-family: 'Inter';
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    text-align: center;
+  }
+
+  &__close-button {
+    max-width: 32px;
+    width: 100%;
+    height: 32px;
+    display: flex;
+    position: fixed;
+    align-self: flex-end;
+    transform: translate(40px, -40px);
+    background-color: transparent;
+    background-image: url(../NewCard/image/close-svgrepo-com.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 0;
+  }
+
+  &__close-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+
+  &__input-container {
+    max-width: 358px;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    box-sizing: border-box;
+    gap: 15px;
+  }
+
+  &__form-item {
+    max-width: 358px;
+    width: 100%;
+    max-height: 27px;
+    padding: 0;
+    padding-bottom: 10px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    background-color: #c1e8d5;
+    color: #000000;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+
+    &_type_description {
+      height: 54px;
+    }
+
+    &_type_file {
+      padding-top: 20px;
+      border: none;
+    }
+  }
+
+  &__form-button {
+    max-width: 358px;
+    max-height: 50px;
+    width: 100%;
+    padding: 0;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    margin-top: 18px;
+    background-color: #50d997;
+    // border-color: #000000;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .popup__form-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}

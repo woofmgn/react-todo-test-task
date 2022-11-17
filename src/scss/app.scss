@@ -1,0 +1,20 @@
+@import '../components/vendor/normalize.scss';
+@import '../components/vendor/fonts/fonts.scss';
+
+body {
+  background-color: #858381;
+}
+
+#root {
+  max-width: 1280px;
+  min-width: 320px;
+  // height: 100%;
+  display: flex;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+@import '../components/Main/styles.scss';
+@import '../components/TodoItem/styles.scss';
+@import '../components/NewCard/styles.scss'
