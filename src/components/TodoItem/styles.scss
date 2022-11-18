@@ -64,6 +64,11 @@
     line-height: 14px;
   }
 
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__compolete {
     cursor: pointer;
     display: flex;
@@ -73,6 +78,19 @@
     max-height: 20px;
     height: 100%;
     border-radius: 5px;
+    border: none;
+  }
+
+  &__edit-button {
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 0;
+    display: flex;
+    background-image: url('./image/edit-svgrepo-com.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
     border: none;
   }
 }

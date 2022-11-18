@@ -1,6 +1,12 @@
 import React from 'react';
 
-const NewCard = ({ onOpeningPopup, onSendNewTodo, setValueTodo, setTitleValue, setDescriptionValue, setDateValue }) => {
+const NewCard = ({ 
+  onOpeningPopup, 
+  onSendNewTodo, 
+  setTitleValue, 
+  setDescriptionValue, 
+  setDateValue 
+}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
