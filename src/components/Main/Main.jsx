@@ -24,6 +24,7 @@ const Main = () => {
       title: titleValue,
       description: descriptionValue,
       date: dateValue,
+      status: '',
     }) 
   }
 
@@ -52,7 +53,8 @@ const Main = () => {
     await updateDoc(doc(db, 'cards', editData.id), { 
       title: editData.title, 
       description: editData.description, 
-      date: editData.date 
+      date: editData.date,
+      status: editData.status, 
     });
   }
 
@@ -74,6 +76,7 @@ const Main = () => {
           setTitleValue={setTitleValue}
           setDescriptionValue={setDescriptionValue}
           setDateValue={setDateValue}
+          onEditCard={handleEditCard}
         />
       }
       {

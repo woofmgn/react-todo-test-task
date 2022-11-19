@@ -1,17 +1,20 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 import dayjs from "dayjs";
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 
-const CardTimer = ({ endTime }) => {
+const CardTimer = ({ endTime, onEditCard, cardData }) => {
 
-  const [statusDeadline, setStatusDeadline] = useState(false);
-  const [status, setStatus] = useState(false);
+const { id, status } = cardData; 
 
   const handleSetStatus = () => {
-    if (!statusDeadline) {
-      setStatus(!status);
+    if (status !== 'complete' && status !== 'isdead') {
+      onEditCard({ ...cardData, status: 'complete', id: id});
+      return;
+    } else if (status === 'complete') {
+      onEditCard({ ...cardData, status: 'inwork', id: id});
+      return;
     }
   }
 
@@ -22,24 +25,25 @@ const CardTimer = ({ endTime }) => {
     if(nowDate.unix() < deadlineDate.unix()) {
       return;
     } else {
-      setStatusDeadline(true);
+      onEditCard({ ...cardData, status: 'isdead', id: id});
     }
 
     setInterval(() => {
-      if(!status && nowDate.unix() < deadlineDate.unix()) {
+      if((status !== 'complete') && (nowDate.unix() < deadlineDate.unix())) {
         return;
       } else {
-        setStatusDeadline(true);
+        onEditCard({ ...cardData, status: 'isdead', id: id});
       }
     }, [3600000]);
     // вот тут нужно подумать насчет зависимостей
-  }, [endTime, status])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <button 
       className={
-        `card__status ${statusDeadline && 'card__status_type_isdead'} 
-        ${status && 'card__status_type_complete'}`}
+        `card__status ${status === 'isdead' && 'card__status_type_isdead'} 
+        ${status === 'complete' && 'card__status_type_complete'}`}
         onClick={handleSetStatus}
       >
         {endTime}

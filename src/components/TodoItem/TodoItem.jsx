@@ -1,6 +1,6 @@
 import CardTimer from "../CardTimer/CardTimer";
 
-const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup }) => {
+const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
 
   return (
     <ul className='card-wrapper'>
@@ -12,7 +12,17 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup }) => {
             <p className='card__description'>{item.description}</p>
             {/* <span className='card__date'>заглушка</span> */}
             <div className='card__wrapper'>
-              <CardTimer endTime={item.date} />
+              <CardTimer 
+                endTime={item.date} 
+                onEditCard={onEditCard}
+                cardData={{ 
+                  title: item.title, 
+                  description: item.description, 
+                  date: item.date,
+                  id: item.id,
+                  status: item.status, 
+                }}
+              />
               <button 
                 className='card__edit-button' 
                 onClick={() => onOpeningPopup({ 
