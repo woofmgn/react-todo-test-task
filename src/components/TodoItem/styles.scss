@@ -69,18 +69,6 @@
     justify-content: space-between;
   }
 
-  &__compolete {
-    cursor: pointer;
-    display: flex;
-    align-self: center;
-    margin-bottom: 10px;
-    max-width: 150px;
-    max-height: 20px;
-    height: 100%;
-    border-radius: 5px;
-    border: none;
-  }
-
   &__edit-button {
     cursor: pointer;
     margin-left: 15px;

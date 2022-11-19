@@ -1,0 +1,19 @@
+.card__status {
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  margin-bottom: 10px;
+  max-width: 150px;
+  max-height: 20px;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.card__status_type_isdead {
+  background-color: red;
+}
+
+.card__status_type_complete {
+  background-color: green;
+}
