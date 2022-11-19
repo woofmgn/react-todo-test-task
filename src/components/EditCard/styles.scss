@@ -1,0 +1,15 @@
+.popup__wrapper_type_edit {
+  background-color: #e9d5ab;
+}
+
+.card__input {
+  background-color: transparent;
+  font-size: 18px;
+  padding: 0;
+
+  &_type_description {
+    max-width: 358px;
+    width: 100%;
+
+  }
+}

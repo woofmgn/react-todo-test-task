@@ -35,7 +35,6 @@ const { id, status } = cardData;
         onEditCard({ ...cardData, status: 'isdead', id: id});
       }
     }, [3600000]);
-    // вот тут нужно подумать насчет зависимостей
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

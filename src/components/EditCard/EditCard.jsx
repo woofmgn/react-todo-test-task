@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const EditCard = ({ onOpeningPopup, editDate, onEditCard }) => {
-  const { title, description, date, id } = editDate;
+  const { title, description, date, id, status } = editDate;
 
   const [ editTitleValue, setEditTitleValue ] = useState('');
   const [ editDescriptionValue, setEditDescriptionValue ] = useState('');
@@ -26,8 +26,8 @@ const EditCard = ({ onOpeningPopup, editDate, onEditCard }) => {
   }
 
   return (
-    <div className="popup popup_active">
-      <div className="popup__wrapper">
+    <div className="popup">
+      <div className="popup__wrapper popup__wrapper_type_edit">
         <h2 className="popup__title">Просмотр и редактирование</h2>
         <button 
           className="popup__close-button" 
@@ -35,32 +35,34 @@ const EditCard = ({ onOpeningPopup, editDate, onEditCard }) => {
           onClick={() => onOpeningPopup()}
         />
         <form 
-          className="popup__form popup__form_type_profile form" 
+          className="popup__form" 
           name="profile" 
           noValidate
           onSubmit={(evt) => handleSubmit(evt, { 
             title: editTitleValue || title, 
             description: editDescriptionValue || description, 
-            date: editDateValue || date, id: id 
+            date: editDateValue || date, 
+            id: id, 
+            status: status,
           })}
         >
           <fieldset className="popup__input-container">
             <textarea 
-              className='card__input card__title' 
+              className='card__input card__input_type_title' 
               type='text' 
               rows='2'
               value={editTitleValue || title || ''} 
               onChange={handleChangeTitle}
             />
             <textarea 
-              className='card__input card__description' 
+              className='card__input card__input_type_description' 
               type='text' 
               rows='4' 
               value={editDescriptionValue || description || ''}
               onChange={handleChangeDescription}
             />
             <textarea 
-              className='card__input card__date' 
+              className='card__input card__input_type_date' 
               type='text' 
               rows='1'
               value={editDateValue || date || ''}

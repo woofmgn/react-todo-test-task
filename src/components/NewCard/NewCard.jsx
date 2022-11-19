@@ -36,7 +36,7 @@ const NewCard = ({
           onClick={onOpeningPopup} 
         />
         <form 
-          className="popup__form popup__form_type_profile form" 
+          className="popup__form" 
           name="profile" 
           noValidate
           onSubmit={handleSubmit}
@@ -84,7 +84,7 @@ const NewCard = ({
               maxLength="200" 
             />
             <button 
-              className="popup__form-button popup__form-button_inactive" 
+              className="popup__form-button" 
               type="submit"
               >
                 Сохранить
@@ -94,6 +94,6 @@ const NewCard = ({
       </div>
     </div>
   )
-}
+};
 
 export default NewCard;

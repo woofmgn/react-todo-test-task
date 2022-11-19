@@ -29,7 +29,8 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
                   title: item.title, 
                   description: item.description, 
                   date: item.date,
-                  id: item.id, 
+                  id: item.id,
+                  status: item.status, 
                 })}
                 />
             </div>

@@ -10,14 +10,7 @@
   left: 0;
   z-index: 2;
   background-color: rgba(0, 0, 0, .5);
-  visibility: hidden;
-  opacity: 0;
   transition: visibility 0.5s, opacity 0.3s linear;
-
-  &_active {
-    opacity: 1;
-    visibility: visible;
-  }
 
   &__wrapper {
     max-width: 430px;
@@ -82,7 +75,7 @@
     padding-bottom: 10px;
     font-family: 'Inter';
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 16.94px;
     background-color: #c1e8d5;
     color: #000000;
@@ -108,7 +101,6 @@
     padding-bottom: 14px;
     margin-top: 18px;
     background-color: #50d997;
-    // border-color: #000000;
     border: 0;
     border-radius: 10px;
     font-family: 'Inter';
