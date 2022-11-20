@@ -14,12 +14,21 @@
   max-width: 200px;
   width: 100%;
   height: 250px;
-  background-color: #ba7a3d;
+  background-color: #abb0a9;
   border-radius: 10px;
   -webkit-box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
   -moz-box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
   box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
 
+  &_type_complete {
+    background-color: #19824f;
+    opacity: 0.6;
+  }
+
+  &_type_invalid {
+    background-color: #e5917e;
+    opacity: 0.6;
+  }
 
   &__delete {
     cursor: pointer;

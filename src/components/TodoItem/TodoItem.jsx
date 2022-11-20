@@ -6,7 +6,12 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownl
     <ul className='card-wrapper'>
       {
         todoData.map((item) => (
-          <li className='card' key={item.id}>
+          <li 
+            className={`card ${
+              item.status === 'complete' && 'card_type_complete'} ${
+                item.status === 'isdead' && 'card_type_invalid'
+            }`} 
+            key={item.id}>
             <button className='card__delete' onClick={() => onDeleteCards(item.id)}/>
             <h2 className='card__title'>{item.title}</h2>
             <p className='card__description'>{item.description}</p>
