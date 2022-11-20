@@ -116,3 +116,16 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 560px) {
+  .popup__close-button {
+    transform: translate(0px, -50px);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .popup__wrapper {
+    max-width: 382px;
+    width: 100%;
+  }
+}

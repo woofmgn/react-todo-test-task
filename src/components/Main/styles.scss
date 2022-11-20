@@ -2,6 +2,8 @@
   margin: 50px auto;
   display: flex;
   flex-direction: column;
+  max-width: 890px;
+  width: 100%;
 }
 
 .new-card-button {
@@ -16,4 +18,10 @@
   -webkit-box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
   -moz-box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
   box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
+}
+
+@media screen and (max-width: 910px) {
+  .new-card-button {
+    margin-right: 20px;
+  }
 }
