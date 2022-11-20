@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import CardTimer from "../CardTimer/CardTimer";
-
-const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownloadFile }) => {
+const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownloadFile, filePath }) => {
 
   return (
     <ul className='card-wrapper'>
@@ -17,9 +16,11 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownl
                 className='card__file-link' 
                 to={item.file} 
                 onClick={() => onDownloadFile(item.file)}
+                download
+                target='_blank'
               >
-                <div></div>
-                <span>скачать файл</span>
+                 <div></div>
+                 <span>скачать файл</span>
               </Link>
             }
             <div className='card__wrapper'>

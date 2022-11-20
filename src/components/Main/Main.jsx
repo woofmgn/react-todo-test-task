@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc } from "firebase/firestore";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { v4 } from 'uuid';
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../firebase";
  
 import EditCard from "../EditCard/EditCard";
@@ -73,34 +72,30 @@ const Main = () => {
       return;
     }
 
-    const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
+    const imageRef = ref(storage, `upload/${fileValue.name}`)
     uploadBytes(imageRef, fileValue).then((res) => {
       console.log('файл загружен')
       console.log(res);
-      console.log(res.metadata.fullPath);
       setFileValue(null);
       setFilePath(res.metadata.fullPath);
     })
   }
 
-  const handleDownloadFile = (refFile) => {
-    const storage = getStorage();
-    getDownloadURL(ref(storage, refFile))
+  const handleDownloadFile = (fileLink) => {
+    const fileRef = ref(storage, fileLink)
+    getDownloadURL(fileRef)
       .then((url) => {
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-          const blob = xhr.response;
-        };
+        // xhr.onload = (event) => {
+        //   const blob = xhr.response;
+        // };
         xhr.open('GET', url);
         xhr.send();
-
-        const img = document.getElementById('myimg');
-        img.setAttribute('src', url);
-  })
-  .catch((error) => {
-    // Handle any errors
-  });
+      })
+      .catch((error) => {
+        console.log(error.message)
+      });
   }
 
   return (
@@ -120,6 +115,7 @@ const Main = () => {
           setDateValue={setDateValue}
           onEditCard={handleEditCard}
           onDownloadFile={handleDownloadFile}
+          filePath={filePath}
         />
       }
       {
