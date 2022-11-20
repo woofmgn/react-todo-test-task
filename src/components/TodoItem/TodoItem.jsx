@@ -10,7 +10,6 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
             <button className='card__delete' onClick={() => onDeleteCards(item.id)}/>
             <h2 className='card__title'>{item.title}</h2>
             <p className='card__description'>{item.description}</p>
-            {/* <span className='card__date'>заглушка</span> */}
             <div className='card__wrapper'>
               <CardTimer 
                 endTime={item.date} 
@@ -32,7 +31,7 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
                   id: item.id,
                   status: item.status, 
                 })}
-                />
+              />
             </div>
           </li>
         ))

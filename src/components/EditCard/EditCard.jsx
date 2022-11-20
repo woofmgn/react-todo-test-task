@@ -71,9 +71,9 @@ const EditCard = ({ onOpeningPopup, editDate, onEditCard }) => {
             <button 
               className="popup__form-button popup__form-button_inactive" 
               type="submit"
-              >
-                Сохранить
-              </button>
+            >
+              Сохранить
+            </button>
           </fieldset>
         </form>
       </div>

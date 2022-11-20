@@ -5,12 +5,15 @@ const NewCard = ({
   onSendNewTodo, 
   setTitleValue, 
   setDescriptionValue, 
-  setDateValue 
+  setDateValue,
+  setFileValue,
+  handleUploadFile 
 }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onSendNewTodo();
+    // handleUploadFile(); 
     onOpeningPopup(false);
   }
 
@@ -24,6 +27,10 @@ const NewCard = ({
 
   const handleChangeDate = (evt) => {
     setDateValue(evt.target.value)
+  }
+
+  const handleChangeFile = (evt) => {
+    setFileValue(evt.target.files)
   }
 
   return (
@@ -81,14 +88,15 @@ const NewCard = ({
               name="formFile" 
               required 
               minLength="2" 
-              maxLength="200" 
+              maxLength="200"
+              onChange={handleChangeFile} 
             />
             <button 
               className="popup__form-button" 
               type="submit"
-              >
-                Сохранить
-              </button>
+            >
+              Сохранить
+            </button>
           </fieldset>
         </form>
       </div>

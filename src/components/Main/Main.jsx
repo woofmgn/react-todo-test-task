@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
-
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from 'uuid';
+import { db, storage } from "../../firebase";
+ 
 import EditCard from "../EditCard/EditCard";
 import NewCard from "../NewCard/NewCard";
 import TodoItem from "../TodoItem/TodoItem";
@@ -18,6 +20,7 @@ const Main = () => {
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [dateValue, setDateValue] = useState('');
+  const [fileValue, setFileValue] = useState(null);
 
   const sendNewTodo = async () => {
     await addDoc(collection(db, 'cards'), {
@@ -25,7 +28,17 @@ const Main = () => {
       description: descriptionValue,
       date: dateValue,
       status: '',
-    }) 
+    })
+    
+    if (fileValue === null) {
+      return;
+    }
+
+    const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
+    uploadBytes(imageRef, fileValue).then(() => {
+      console.log('файл загружен')
+      setFileValue(null);
+    })
   }
 
   const handleOpenAddPopup = () => {
@@ -62,12 +75,25 @@ const Main = () => {
     await deleteDoc(doc(db, 'cards', id));
   };
 
+  // const handleUploadFile = () => {
+  //   if (fileValue === null) {
+  //     return;
+  //   }
+
+  //   const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
+  //   uploadBytes(imageRef, fileValue).then(() => {
+  //     console.log('файл загружен')
+  //     setFileValue(null);
+  //   })
+  // }
+
   return (
-    <>
+  <>
     <section className="page">
       <button 
         className="new-card-button"
-        onClick={handleOpenAddPopup} />
+        onClick={handleOpenAddPopup} 
+      />
       {
         <TodoItem 
           onOpeningPopup={handleOpenEditPopup}
@@ -83,10 +109,12 @@ const Main = () => {
         popupAddOpen && (
           <NewCard 
             onOpeningPopup={handleOpenAddPopup} 
-            onSendNewTodo={sendNewTodo} 
+            onSendNewTodo={sendNewTodo}
+            // onSendNewFile={handleUploadFile} 
             setTitleValue={setTitleValue}
             setDescriptionValue={setDescriptionValue}
             setDateValue={setDateValue}
+            setFileValue={setFileValue}
           />
         )
       }
@@ -100,7 +128,7 @@ const Main = () => {
         )
       }
     </section>
-    </>
+  </>
   )
 }
 

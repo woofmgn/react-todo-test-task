@@ -44,9 +44,9 @@ const { id, status } = cardData;
         `card__status ${status === 'isdead' && 'card__status_type_isdead'} 
         ${status === 'complete' && 'card__status_type_complete'}`}
         onClick={handleSetStatus}
-      >
-        {endTime}
-      </button>
+    >
+      {endTime}
+    </button>
   )
 }
 
