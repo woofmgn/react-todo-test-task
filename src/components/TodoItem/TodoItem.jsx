@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import CardTimer from "../CardTimer/CardTimer";
 
-const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
+const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownloadFile }) => {
 
   return (
     <ul className='card-wrapper'>
@@ -10,6 +11,17 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
             <button className='card__delete' onClick={() => onDeleteCards(item.id)}/>
             <h2 className='card__title'>{item.title}</h2>
             <p className='card__description'>{item.description}</p>
+            {
+              item.file !== '' && 
+              <Link
+                className='card__file-link' 
+                to={item.file} 
+                onClick={() => onDownloadFile(item.file)}
+              >
+                <div></div>
+                <span>скачать файл</span>
+              </Link>
+            }
             <div className='card__wrapper'>
               <CardTimer 
                 endTime={item.date} 
@@ -19,7 +31,8 @@ const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard }) => {
                   description: item.description, 
                   date: item.date,
                   id: item.id,
-                  status: item.status, 
+                  status: item.status,
+                  file: item.file, 
                 }}
               />
               <button 

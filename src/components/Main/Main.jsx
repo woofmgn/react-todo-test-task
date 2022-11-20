@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { v4 } from 'uuid';
 import { db, storage } from "../../firebase";
  
@@ -21,23 +21,16 @@ const Main = () => {
   const [descriptionValue, setDescriptionValue] = useState('');
   const [dateValue, setDateValue] = useState('');
   const [fileValue, setFileValue] = useState(null);
+  const [filePath, setFilePath] = useState('');
 
   const sendNewTodo = async () => {
+
     await addDoc(collection(db, 'cards'), {
       title: titleValue,
       description: descriptionValue,
       date: dateValue,
       status: '',
-    })
-    
-    if (fileValue === null) {
-      return;
-    }
-
-    const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
-    uploadBytes(imageRef, fileValue).then(() => {
-      console.log('файл загружен')
-      setFileValue(null);
+      file: filePath,
     })
   }
 
@@ -75,17 +68,40 @@ const Main = () => {
     await deleteDoc(doc(db, 'cards', id));
   };
 
-  // const handleUploadFile = () => {
-  //   if (fileValue === null) {
-  //     return;
-  //   }
+  const handleUploadFile = () => {
+    if (fileValue === null) {
+      return;
+    }
 
-  //   const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
-  //   uploadBytes(imageRef, fileValue).then(() => {
-  //     console.log('файл загружен')
-  //     setFileValue(null);
-  //   })
-  // }
+    const imageRef = ref(storage, `upload/${fileValue.name + v4()}`)
+    uploadBytes(imageRef, fileValue).then((res) => {
+      console.log('файл загружен')
+      console.log(res);
+      console.log(res.metadata.fullPath);
+      setFileValue(null);
+      setFilePath(res.metadata.fullPath);
+    })
+  }
+
+  const handleDownloadFile = (refFile) => {
+    const storage = getStorage();
+    getDownloadURL(ref(storage, refFile))
+      .then((url) => {
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = (event) => {
+          const blob = xhr.response;
+        };
+        xhr.open('GET', url);
+        xhr.send();
+
+        const img = document.getElementById('myimg');
+        img.setAttribute('src', url);
+  })
+  .catch((error) => {
+    // Handle any errors
+  });
+  }
 
   return (
   <>
@@ -103,6 +119,7 @@ const Main = () => {
           setDescriptionValue={setDescriptionValue}
           setDateValue={setDateValue}
           onEditCard={handleEditCard}
+          onDownloadFile={handleDownloadFile}
         />
       }
       {
@@ -110,7 +127,7 @@ const Main = () => {
           <NewCard 
             onOpeningPopup={handleOpenAddPopup} 
             onSendNewTodo={sendNewTodo}
-            // onSendNewFile={handleUploadFile} 
+            onSendNewFile={handleUploadFile} 
             setTitleValue={setTitleValue}
             setDescriptionValue={setDescriptionValue}
             setDateValue={setDateValue}

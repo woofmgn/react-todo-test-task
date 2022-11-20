@@ -37,6 +37,10 @@
     align-self: flex-end;
   }
 
+  &__delete:hover {
+    opacity: 0.7;
+  }
+
   &__title {
     margin: 0 16px 15px 16px;
     font-size: 20px;
@@ -57,6 +61,34 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  &__file-link {
+    display: flex;
+    margin-bottom: 14px;
+    max-width: 160px;
+    border: 1px solid #000000;
+    border-radius: 7px;
+
+    div {
+      width: 30px;
+      height: 30px;
+      background-image: url('./image/download-file-download-svgrepo-com.svg');
+      background-repeat: no-repeat;
+      align-self: center;
+    }
+
+    span {
+      color: black;
+      font-size: 12px;
+      align-self: center;
+      padding: 10px 10px;
+    }
+  }
+
+  &__file-link:hover {
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
+  }
+
 
   &__date {
     margin: 0 16px 26px 16px;
@@ -80,5 +112,9 @@
     width: 21px;
     height: 21px;
     border: none;
+  }
+
+  &__edit-button:hover {
+    opacity: 0.6;
   }
 }

@@ -7,18 +7,17 @@ const NewCard = ({
   setDescriptionValue, 
   setDateValue,
   setFileValue,
-  handleUploadFile 
+  onSendNewFile
 }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onSendNewTodo();
-    // handleUploadFile(); 
     onOpeningPopup(false);
   }
 
   const handleChangeTitle = (evt) => {
-    setTitleValue(evt.target.value)
+    setTitleValue(evt.target.value);
   }
 
   const handleChangeDescription = (evt) => {
@@ -30,7 +29,8 @@ const NewCard = ({
   }
 
   const handleChangeFile = (evt) => {
-    setFileValue(evt.target.files)
+    setFileValue(evt.target.files[0]);
+    onSendNewFile();
   }
 
   return (
@@ -89,7 +89,7 @@ const NewCard = ({
               required 
               minLength="2" 
               maxLength="200"
-              onChange={handleChangeFile} 
+              onChange={handleChangeFile}
             />
             <button 
               className="popup__form-button" 
