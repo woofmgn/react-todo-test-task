@@ -22,12 +22,18 @@ const Main = () => {
   const [popupEditOpen, setPopupEditOpen] = useState(false);
 /**массив объектов todo
 * @property {Array} // массив
-* @property {func} - изменения массива
+* @property {func}  // изменения массива
 */
   const [valueTodo, setValueTodo] = useState([]);
-
+/**объект с данными для редактирования карточки
+ * @property {object} // объект с данными
+ * @property {func}   // изменение объекта с данными
+ */
   const [editDate, setEditDate] = useState({});
-
+/**
+* @property {string} // заголовок todo
+* @property {func} // изменение заголовка todo
+*/
   const [titleValue, setTitleValue] = useState('');
   const [descriptionValue, setDescriptionValue] = useState('');
   const [dateValue, setDateValue] = useState('');
