@@ -9,9 +9,21 @@ import NewCard from "../NewCard/NewCard";
 import TodoItem from "../TodoItem/TodoItem";
 
 const Main = () => {
-  const [popupAddOpen, setPopupAddOpen] = useState(false);
-  const [popupEditOpen, setPopupEditOpen] = useState(false);
 
+/**стейт открытия попапа добавления карточки
+* @property {boolean} 0 - попап закрыт
+* @property {func} - изменения состояния попапа
+*/
+  const [popupAddOpen, setPopupAddOpen] = useState(false);
+/**стейт открытия попапа редактирования карточки
+* @property {boolean} 0 - попап закрыт
+* @property {func} - изменения состояния попапа
+*/
+  const [popupEditOpen, setPopupEditOpen] = useState(false);
+/**массив объектов todo
+* @property {Array} // массив
+* @property {func} - изменения массива
+*/
   const [valueTodo, setValueTodo] = useState([]);
 
   const [editDate, setEditDate] = useState({});
