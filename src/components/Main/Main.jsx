@@ -87,9 +87,9 @@ const Main = () => {
       .then((url) => {
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'blob';
-        // xhr.onload = (event) => {
-        //   const blob = xhr.response;
-        // };
+        xhr.onload = (event) => {
+          const blob = xhr.response;
+        };
         xhr.open('GET', url);
         xhr.send();
       })

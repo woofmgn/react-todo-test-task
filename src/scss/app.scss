@@ -8,15 +8,14 @@ body {
 #root {
   max-width: 1280px;
   min-width: 320px;
-  // height: 100%;
   display: flex;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
-@import '../components/Main/styles.scss';
-@import '../components/TodoItem/styles.scss';
-@import '../components/NewCard/styles.scss';
-@import '../components/EditCard/styles.scss';
-@import '../components/CardTimer/styles.scss';
+@import '../components/Main/Main.scss';
+@import '../components/TodoItem/TodoItem.scss';
+@import '../components/NewCard/NewCard.scss';
+@import '../components/EditCard/EditCard.scss';
+@import '../components/CardTimer/CardTimer.scss';
