@@ -67,12 +67,12 @@ const Main = () => {
     await deleteDoc(doc(db, 'cards', id));
   };
 
-  const handleUploadFile = async () => {
+  const handleUploadFile = () => {
     if (fileValue === null) {
       return;
     }
 
-    const imageRef = await ref(storage, `upload/${fileValue.name}`)
+    const imageRef = ref(storage, `upload/${fileValue.name}`)
     uploadBytes(imageRef, fileValue).then((res) => {
       console.log('файл загружен')
       console.log(res);
@@ -87,9 +87,6 @@ const Main = () => {
       .then((url) => {
         const xhr = new XMLHttpRequest();
         xhr.responseType = 'blob';
-        xhr.onload = (event) => {
-          const blob = xhr.response;
-        };
         xhr.open('GET', url);
         xhr.send();
       })
