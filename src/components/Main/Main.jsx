@@ -35,6 +35,7 @@ const Main = () => {
 
   const handleOpenAddPopup = () => {
     setPopupAddOpen(!popupAddOpen);
+    setFilePath('');
   }
 
   const handleOpenEditPopup = (editDate) => {
@@ -107,12 +108,8 @@ const Main = () => {
           onOpeningPopup={handleOpenEditPopup}
           todoData={valueTodo}
           onDeleteCards={handleDeleteCards}
-          setTitleValue={setTitleValue}
-          setDescriptionValue={setDescriptionValue}
-          setDateValue={setDateValue}
           onEditCard={handleEditCard}
           onDownloadFile={handleDownloadFile}
-          filePath={filePath}
         />
       }
       {

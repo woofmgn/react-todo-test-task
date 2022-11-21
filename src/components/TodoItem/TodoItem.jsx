@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import CardTimer from "../CardTimer/CardTimer";
-const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownloadFile, filePath }) => {
+const TodoItem = ({ todoData, onDeleteCards, onOpeningPopup, onEditCard, onDownloadFile }) => {
 
   return (
     <ul className='card-wrapper'>

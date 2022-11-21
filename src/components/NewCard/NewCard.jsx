@@ -30,7 +30,6 @@ const NewCard = ({
 
   const handleChangeFile = (evt) => {
     setFileValue(evt.target.files[0]);
-    // onSendNewFile();
   }
 
   const handleUploadFile = (evt) => {
