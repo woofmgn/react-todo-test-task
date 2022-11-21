@@ -15,20 +15,24 @@ const Main = () => {
 * @property {func} - изменения состояния попапа
 */
   const [popupAddOpen, setPopupAddOpen] = useState(false);
+
 /**стейт открытия попапа редактирования карточки
 * @property {boolean} 0 - попап закрыт
 * @property {func} - изменения состояния попапа
 */
   const [popupEditOpen, setPopupEditOpen] = useState(false);
+
 /**массив объектов todo
 * @property {Array} // массив
 * @property {func}  // изменения массива
 */
   const [valueTodo, setValueTodo] = useState([]);
+
 /**объект с данными для редактирования карточки
- * @property {object} // объект с данными
- * @property {func}   // изменение объекта с данными
- */
+* @property {object} // объект с данными
+* @property {func}   // изменение объекта с данными
+*/
+
   const [editDate, setEditDate] = useState({});
 /**
 * @property {string} // заголовок todo

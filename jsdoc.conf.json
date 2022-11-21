@@ -8,14 +8,18 @@
   },
   "source": {
     "include": [
-      "src"
+      "src",
+      "src/components/CardTimer",
+      "src/components/EditCard",
+      "src/components/Main",
+      "src/components/NewCard",
+      "src/components/TodoItem"
     ],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "plugins": [
-    "plugins/markdown",
-    "better-docs/component"
+    "plugins/markdown"
   ],
   "templates": {
     "better-docs": {
