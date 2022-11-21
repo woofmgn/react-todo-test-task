@@ -30,6 +30,11 @@ const NewCard = ({
 
   const handleChangeFile = (evt) => {
     setFileValue(evt.target.files[0]);
+    // onSendNewFile();
+  }
+
+  const handleUploadFile = (evt) => {
+    evt.preventDefault();
     onSendNewFile();
   }
 
@@ -91,6 +96,7 @@ const NewCard = ({
               maxLength="200"
               onChange={handleChangeFile}
             />
+            <button className='popup__upload-button' onClick={handleUploadFile}>Загрузить</button>
             <button 
               className="popup__form-button" 
               type="submit"

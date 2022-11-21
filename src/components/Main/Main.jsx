@@ -67,12 +67,12 @@ const Main = () => {
     await deleteDoc(doc(db, 'cards', id));
   };
 
-  const handleUploadFile = () => {
+  const handleUploadFile = async () => {
     if (fileValue === null) {
       return;
     }
 
-    const imageRef = ref(storage, `upload/${fileValue.name}`)
+    const imageRef = await ref(storage, `upload/${fileValue.name}`)
     uploadBytes(imageRef, fileValue).then((res) => {
       console.log('файл загружен')
       console.log(res);

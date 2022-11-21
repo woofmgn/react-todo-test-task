@@ -20,6 +20,10 @@
   box-shadow: 7px 7px 20px 6px rgba(71, 70, 69, 0.62);
 }
 
+.new-card-button:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 910px) {
   .new-card-button {
     margin-right: 20px;

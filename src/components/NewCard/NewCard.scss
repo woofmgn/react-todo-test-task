@@ -89,7 +89,17 @@
     &_type_file {
       padding-top: 20px;
       border: none;
+      padding-bottom: 0;
     }
+  }
+
+  &__upload-button {
+    max-width: 134px;
+  }
+
+  &__upload-button:hover {
+    cursor: pointer;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
   }
 
   &__form-button {
@@ -114,6 +124,7 @@
   .popup__form-button:hover {
     opacity: 0.8;
     cursor: pointer;
+    box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.5);
   }
 }
 
